@@ -2,8 +2,6 @@
 TUGAS Tech Web Backend (Only Backend)
 Pergrup Massive
 
-Deadline : 20 juni 2024
-Link pengumpulan menyusul ya teman2, jgn lupa dikerjain
 
 Kebutuhan
  - Mampu membuat notes baru
