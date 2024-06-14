@@ -33,11 +33,16 @@ export const getAllNotes = async (req, res) => {
 // Get Notes By Id
 export const getNoteById = async (req, res) => {
     const { id } = req.params
-    const { title, datetime, note } = req.body
 
     try {
-        const results = await query(`select * from notes where id = ?`)
-        return res.status(200).json({ success: true, data: { id, title, datetime, note } });
+        const results = await query(`select * from notes where id = ?`, [id])
+        if (results.length === 0) {
+            return res.status(404).json({ success: false, msg: 'Notes tidak ditemukan' });
+        }
+
+        const note = results[0];
+
+        return res.status(200).json({ success: true, data: note });
     } catch (e) {
         console.error('Terjadi kesalahan', e);
         return res.status(500).json({ success: false, msg: 'Terjadi kesalahan pada server' });
